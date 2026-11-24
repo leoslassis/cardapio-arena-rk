@@ -2,6 +2,8 @@
 
 O cardápio está em `index.html`. As fotos ficam em `imagens/`, separadas por categoria.
 
+As demais miniaturas são imagens ilustrativas geradas para o cardápio.
+
 ## Fontes das fotos
 
 - [Amstel 600 ml — Ponto Certo Conveniência](https://www.pontocertoconveniencia.com.br/cerveja-amstel-lager-600ml)
