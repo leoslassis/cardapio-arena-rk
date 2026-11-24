@@ -146,7 +146,6 @@
       <li><a href="#sucos-e-acai"><span class="category-icon" aria-hidden="true">🥤</span>Sucos e açaí</a></li>
       <li><a href="#refrigerantes"><span class="category-icon" aria-hidden="true">🧃</span>Refrigerantes e águas</a></li>
       <li><a href="#cervejas"><span class="category-icon" aria-hidden="true">🍺</span>Cervejas</a></li>
-      <li><a href="#baldes"><span class="category-icon" aria-hidden="true">🧊</span>Baldes</a></li>
       <li><a href="#drinks"><span class="category-icon" aria-hidden="true">🍹</span>Drinks</a></li>
       <li><a href="#bebidas-prontas"><span class="category-icon" aria-hidden="true">🍷</span>Bebidas prontas</a></li>
       <li><a href="#destilados"><span class="category-icon" aria-hidden="true">🥃</span>Destilados</a></li>
@@ -323,7 +322,8 @@
   <script>
     const links = document.querySelectorAll('nav a');
     function markCategory() {
-      const category = location.hash || '#lanches';
+      const hash = location.hash || '#lanches';
+      const category = ['#long-neck', '#baldes', '#baldes-long-neck'].includes(hash) ? '#cervejas' : hash;
       for (const link of links) {
         if (link.hash === category) link.setAttribute('aria-current', 'location');
         else link.removeAttribute('aria-current');
