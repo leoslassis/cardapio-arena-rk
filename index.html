@@ -3,31 +3,125 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#632113">
+  <meta name="theme-color" content="#191110">
   <title>Cardápio | Arena RK</title>
   <style>
-    :root{color-scheme:light;--sand:#fbecd1;--panel:#fff8e9;--ink:#352016;--red:#7d2819;--line:#e6c8a5;--muted:#654d3e}
-    *{box-sizing:border-box}
-    html{scroll-padding-top:5.5rem}
-    body{margin:0;background:linear-gradient(148deg,#681f16,#a83c1b 36%,#e48537 73%,#d17736) fixed;color:var(--ink);font-family:system-ui,sans-serif}
-    header{max-width:68rem;margin:auto;text-align:center}
-    .brand{display:block;width:100%;height:clamp(7rem,19vw,12.875rem);object-fit:cover;object-position:center;background:#ae3f20}
-    h1{position:relative;width:fit-content;max-width:calc(100% - 2rem);margin:-.65rem auto .85rem;padding:.55rem clamp(1rem,4vw,2.4rem);border-radius:.3rem;background:var(--red);box-shadow:0 .2rem 0 #e9984b;color:#fff8e9;font-size:clamp(1.3rem,4vw,2rem);font-weight:850;font-style:italic;letter-spacing:.02em;text-transform:uppercase}
-    nav{position:sticky;top:0;z-index:1;background:var(--sand);border-block:1px solid var(--line)}
-    nav ul{display:flex;max-width:42rem;overflow-x:auto;gap:.4rem;list-style:none;padding:.65rem .65rem;margin:0 auto}
-    nav a{display:block;padding:.65rem .8rem;border-radius:999px;background:var(--panel);color:inherit;text-decoration:none;font-size:.875rem;font-weight:650;white-space:nowrap}
-    nav a[aria-current]{background:var(--red);color:#fff8e9}
-    a:focus-visible{outline:2px solid var(--red);outline-offset:2px}
-    main{max-width:42rem;margin:0 auto 1rem;padding:1.3rem 1rem 2rem;background:var(--sand);border-radius:0 0 1.25rem 1.25rem}
-    section{margin:0 0 2rem}
-    h2{padding:.5rem .8rem;border-radius:.3rem;background:linear-gradient(100deg,var(--red) 35%,#a94020);color:#fff8e9;font-size:1.25rem;margin:0 0 .75rem}
-    article{display:grid;grid-template-columns:minmax(0,1fr);gap:.8rem;align-items:center;background:var(--panel);border:1px solid var(--line);border-radius:1rem;padding:.75rem;margin:.55rem 0}
-    article.with-photo{grid-template-columns:minmax(0,1fr) clamp(5rem,24vw,7rem)}
-    h3{font-size:1.06rem;margin:0}
-    article p{margin:.35rem 0;color:var(--muted)}
-    strong{display:block;color:var(--red);font-size:1.25rem;margin-top:.35rem}
-    article img{display:block;width:100%;height:auto;aspect-ratio:1;object-fit:contain;background:white;border-radius:.6rem}
-    #baldes img{object-fit:cover}
+    :root {
+      color-scheme: dark;
+      --surface: rgba(37, 26, 24, .72);
+      --surface-raised: rgba(255, 239, 214, .09);
+      --line: rgba(255, 224, 192, .16);
+      --text: #fff6ea;
+      --muted: #e4cfc0;
+      --accent: #ffc480;
+      --accent-ink: #341a11;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-padding-top: 5rem; }
+    body {
+      margin: 0;
+      color: var(--text);
+      font-family: system-ui, sans-serif;
+      background: radial-gradient(ellipse at 15% 8%, #552a22, transparent 52%),
+        radial-gradient(ellipse at 80% 65%, #302127, transparent 56%), #171110;
+      background-attachment: fixed;
+    }
+    header { position: relative; max-width: 76rem; margin: auto; text-align: center; }
+    .brand {
+      display: block;
+      width: 100%;
+      height: clamp(8rem, 21vw, 14.4rem);
+      object-fit: cover;
+      object-position: center;
+      mask-image: linear-gradient(#000 88%, transparent);
+    }
+    h1 {
+      position: relative;
+      margin: -.8rem 1rem .85rem;
+      font-size: clamp(1.65rem, 5vw, 2.45rem);
+      font-weight: 780;
+      letter-spacing: -.045em;
+    }
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 1;
+      max-width: 48rem;
+      margin: 0 auto;
+      border-block: 1px solid var(--line);
+      background: rgba(27, 19, 18, .90);
+      backdrop-filter: blur(16px);
+    }
+    nav ul {
+      display: flex;
+      gap: .45rem;
+      margin: 0;
+      padding: .65rem .75rem;
+      overflow-x: auto;
+      list-style: none;
+      scrollbar-width: thin;
+    }
+    nav a {
+      display: flex;
+      align-items: center;
+      gap: .4rem;
+      padding: .62rem .8rem;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--surface-raised);
+      color: inherit;
+      text-decoration: none;
+      white-space: nowrap;
+      font-size: .88rem;
+      font-weight: 650;
+    }
+    nav a:hover { background: rgba(255, 239, 214, .16); }
+    nav a[aria-current] { border-color: transparent; background: var(--accent); color: var(--accent-ink); }
+    a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+    main { max-width: 48rem; margin: 0 auto; padding: 1.15rem .75rem 3rem; }
+    section {
+      margin-bottom: 1rem;
+      padding: clamp(.75rem, 2vw, 1.1rem);
+      border: 1px solid var(--line);
+      border-radius: 1.35rem;
+      background: var(--surface);
+      box-shadow: 0 .6rem 1.5rem rgba(0, 0, 0, .2);
+    }
+    h2 {
+      display: flex;
+      align-items: center;
+      gap: .6rem;
+      margin: 0 0 .7rem;
+      font-size: clamp(1.15rem, 3vw, 1.45rem);
+      letter-spacing: -.02em;
+    }
+    .category-icon { flex: none; line-height: 1; }
+    h2 .category-icon {
+      display: grid;
+      place-items: center;
+      width: 2.15rem;
+      height: 2.15rem;
+      border-radius: .75rem;
+      background: rgba(255, 196, 128, .13);
+      font-size: 1.05rem;
+    }
+    article {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      align-items: center;
+      gap: .85rem;
+      margin-top: .55rem;
+      padding: .8rem;
+      border: 1px solid var(--line);
+      border-radius: .95rem;
+      background: var(--surface-raised);
+    }
+    article.with-photo { grid-template-columns: minmax(0, 1fr) clamp(5rem, 22vw, 6.5rem); }
+    h3 { margin: 0; font-size: 1.02rem; }
+    article p { margin: .35rem 0; color: var(--muted); font-size: .9rem; line-height: 1.4; }
+    strong { display: block; margin-top: .35rem; color: var(--accent); font-size: 1.08rem; font-variant-numeric: tabular-nums; }
+    article img { display: block; width: 100%; height: auto; aspect-ratio: 1; object-fit: contain; background: #fff; border-radius: .65rem; }
   </style>
 </head>
 <body>
@@ -37,24 +131,24 @@
   </header>
   <nav aria-label="Categorias">
     <ul>
-      <li><a href="#lanches">Lanches</a></li>
-      <li><a href="#porcoes">Porções</a></li>
-      <li><a href="#salgadinhos">Salgadinhos fritos</a></li>
-      <li><a href="#sobremesas">Sobremesas</a></li>
-      <li><a href="#adicionais">Adicionais</a></li>
-      <li><a href="#sucos-e-acai">Sucos e açaí</a></li>
-      <li><a href="#refrigerantes">Refrigerantes e águas</a></li>
-      <li><a href="#cervejas">Cervejas</a></li>
-      <li><a href="#baldes">Baldes</a></li>
-      <li><a href="#drinks">Drinks</a></li>
-      <li><a href="#bebidas-prontas">Bebidas prontas</a></li>
-      <li><a href="#destilados">Destilados</a></li>
-      <li><a href="#outros">Outros</a></li>
+      <li><a href="#lanches"><span class="category-icon" aria-hidden="true">🍔</span>Lanches</a></li>
+      <li><a href="#porcoes"><span class="category-icon" aria-hidden="true">🍟</span>Porções</a></li>
+      <li><a href="#salgadinhos"><span class="category-icon" aria-hidden="true">🥟</span>Salgadinhos fritos</a></li>
+      <li><a href="#sobremesas"><span class="category-icon" aria-hidden="true">🍩</span>Sobremesas</a></li>
+      <li><a href="#adicionais"><span class="category-icon" aria-hidden="true">➕</span>Adicionais</a></li>
+      <li><a href="#sucos-e-acai"><span class="category-icon" aria-hidden="true">🥤</span>Sucos e açaí</a></li>
+      <li><a href="#refrigerantes"><span class="category-icon" aria-hidden="true">🧃</span>Refrigerantes e águas</a></li>
+      <li><a href="#cervejas"><span class="category-icon" aria-hidden="true">🍺</span>Cervejas</a></li>
+      <li><a href="#baldes"><span class="category-icon" aria-hidden="true">🧊</span>Baldes</a></li>
+      <li><a href="#drinks"><span class="category-icon" aria-hidden="true">🍹</span>Drinks</a></li>
+      <li><a href="#bebidas-prontas"><span class="category-icon" aria-hidden="true">🍷</span>Bebidas prontas</a></li>
+      <li><a href="#destilados"><span class="category-icon" aria-hidden="true">🥃</span>Destilados</a></li>
+      <li><a href="#outros"><span class="category-icon" aria-hidden="true">💨</span>Tabacaria</a></li>
     </ul>
   </nav>
   <main>
     <section id="lanches">
-      <h2>Lanches</h2>
+      <h2><span class="category-icon" aria-hidden="true">🍔</span>Lanches</h2>
       <article><div><h3>Lancinho</h3><p>Pão brioche, hambúrguer artesanal de 160 g, queijo prato e maionese verde.</p><strong>R$ 30,00</strong></div></article>
       <article><div><h3>Melhor Eu Ir</h3><p>Pão brioche, hambúrguer artesanal de 160 g, queijo prato, alface, tomate e maionese verde.</p><strong>R$ 35,00</strong></div></article>
       <article><div><h3>Pé na Areia</h3><p>Pão brioche, hambúrguer artesanal de 160 g, queijo prato, rúcula, tomate e geleia de goiaba.</p><strong>R$ 37,00</strong></div></article>
@@ -63,7 +157,7 @@
       <article><div><h3>Combo</h3><p>Acrescente batata frita e refrigerante.</p><strong>+ R$ 15,00</strong></div></article>
     </section>
     <section id="porcoes">
-      <h2>Porções tradicionais</h2>
+      <h2><span class="category-icon" aria-hidden="true">🍟</span>Porções tradicionais</h2>
       <article><div><h3>Batata frita</h3><p>500 g de batata frita, acompanhada de molho de maionese da casa.</p><strong>R$ 35,00</strong></div></article>
       <article><div><h3>Batata com cheddar e bacon</h3><p>500 g de batata frita com cheddar e bacon.</p><strong>R$ 45,00</strong></div></article>
       <article><div><h3>Iscas de frango</h3><p>500 g, acompanhadas de maionese verde da casa.</p><strong>R$ 45,00</strong></div></article>
@@ -72,35 +166,35 @@
       <article><div><h3>Calabresa</h3><p>300 g</p><strong>R$ 44,00</strong></div></article>
     </section>
     <section id="porcoes-mistas">
-      <h2>Porções mistas</h2>
+      <h2><span class="category-icon" aria-hidden="true">🍗</span>Porções mistas</h2>
       <article><div><h3>Contrafilé com fritas</h3><p>400 g de contrafilé e 350 g de batata frita.</p><strong>R$ 79,00</strong></div></article>
       <article><div><h3>Calafritas</h3><p>400 g de calabresa e 350 g de batata frita.</p><strong>R$ 60,00</strong></div></article>
       <article><div><h3>Iscas de frango com fritas</h3><p>400 g de frango e 350 g de batata frita, com maionese verde da casa.</p><strong>R$ 65,00</strong></div></article>
     </section>
     <section id="petiscos">
-      <h2>Petiscos</h2>
+      <h2><span class="category-icon" aria-hidden="true">🧆</span>Petiscos</h2>
       <article><div><h3>Nuggets (10 un.)</h3><strong>R$ 20,00</strong></div></article>
       <article><div><h3>Dadinhos de tapioca (15 un.)</h3><strong>R$ 35,00</strong></div></article>
     </section>
     <section id="salgadinhos">
-      <h2>Salgadinhos fritos</h2>
+      <h2><span class="category-icon" aria-hidden="true">🥟</span>Salgadinhos fritos</h2>
       <article class="with-photo"><div><h3>P – 12 unidades</h3><p>Coxinhas, bolinhos de queijo e kibes. Misture os sabores como preferir.</p><strong>R$ 15,00</strong></div><img src="imagens/salgadinhos/salgadinhos-p.webp" alt="" width="240" height="240" loading="lazy" decoding="async"></article>
       <article class="with-photo"><div><h3>M – 18 unidades</h3><p>Coxinhas, bolinhos de queijo e kibes.</p><strong>R$ 22,00</strong></div><img src="imagens/salgadinhos/salgadinhos-m.webp" alt="" width="240" height="240" loading="lazy" decoding="async"></article>
       <article class="with-photo"><div><h3>G – 30 unidades</h3><p>Coxinhas, bolinhos de queijo e kibes.</p><strong>R$ 33,00</strong></div><img src="imagens/salgadinhos/salgadinhos-g.webp" alt="" width="240" height="240" loading="lazy" decoding="async"></article>
     </section>
     <section id="sobremesas">
-      <h2>Sobremesas</h2>
+      <h2><span class="category-icon" aria-hidden="true">🍩</span>Sobremesas</h2>
       <article class="with-photo"><div><h3>Mini churros P – 12 unidades</h3><p>Recheados com doce de leite, açúcar e canela.</p><strong>R$ 18,00</strong></div><img src="imagens/sobremesas/mini-churros-p.webp" alt="" width="240" height="240" loading="lazy" decoding="async"></article>
       <article class="with-photo"><div><h3>Mini churros M – 18 unidades</h3><strong>R$ 25,00</strong></div><img src="imagens/sobremesas/mini-churros-m.webp" alt="" width="240" height="240" loading="lazy" decoding="async"></article>
       <article class="with-photo"><div><h3>Mini churros G – 30 unidades</h3><strong>R$ 35,00</strong></div><img src="imagens/sobremesas/mini-churros-g.webp" alt="" width="240" height="240" loading="lazy" decoding="async"></article>
     </section>
     <section id="adicionais">
-      <h2>Adicionais</h2>
+      <h2><span class="category-icon" aria-hidden="true">➕</span>Adicionais</h2>
       <article class="with-photo"><div><h3>Cheddar</h3><strong>R$ 5,00</strong></div><img src="imagens/adicionais/cheddar.webp" alt="" width="240" height="240" loading="lazy" decoding="async"></article>
       <article class="with-photo"><div><h3>Bacon</h3><strong>R$ 5,00</strong></div><img src="imagens/adicionais/bacon.webp" alt="" width="240" height="240" loading="lazy" decoding="async"></article>
     </section>
     <section id="sucos-e-acai">
-      <h2>Sucos e açaí</h2>
+      <h2><span class="category-icon" aria-hidden="true">🥤</span>Sucos e açaí</h2>
       <article class="with-photo"><div><h3>Suco natural</h3><strong>R$ 15,00</strong></div><img src="imagens/sucos-e-acai/suco-natural.webp" alt="" width="240" height="240" loading="lazy" decoding="async"></article>
       <article class="with-photo"><div><h3>Açaí tradicional</h3><strong>R$ 18,00</strong></div><img src="imagens/sucos-e-acai/acai-tradicional.webp" alt="" width="240" height="240" loading="lazy" decoding="async"></article>
       <article class="with-photo"><div><h3>Açaí com frutas</h3><strong>R$ 21,00</strong></div><img src="imagens/sucos-e-acai/acai-com-frutas.webp" alt="" width="240" height="240" loading="lazy" decoding="async"></article>
@@ -108,7 +202,7 @@
       <article class="with-photo"><div><h3>Água de coco</h3><strong>R$ 8,00</strong></div><img src="imagens/sucos-e-acai/agua-de-coco.webp" alt="" width="240" height="240" loading="lazy" decoding="async"></article>
     </section>
     <section id="refrigerantes">
-      <h2>Refrigerantes e águas</h2>
+      <h2><span class="category-icon" aria-hidden="true">🧃</span>Refrigerantes e águas</h2>
       <article class="with-photo"><div><h3>Água tônica 350 ml</h3><strong>R$ 7,00</strong></div><img src="imagens/refrigerantes/agua-tonica.webp" alt="" width="240" height="240" loading="lazy" decoding="async"></article>
       <article class="with-photo"><div><h3>Itubaína (lata)</h3><strong>R$ 7,00</strong></div><img src="imagens/refrigerantes/itubaina.webp" alt="" width="240" height="240" loading="lazy" decoding="async"></article>
       <article class="with-photo"><div><h3>Itubaína Zero (lata)</h3><strong>R$ 7,00</strong></div><img src="imagens/refrigerantes/itubaina-zero.webp" alt="" width="240" height="240" loading="lazy" decoding="async"></article>
@@ -124,14 +218,14 @@
       <article class="with-photo"><div><h3>Água com gás</h3><strong>R$ 5,00</strong></div><img src="imagens/refrigerantes/agua-com-gas.webp" alt="" width="240" height="240" loading="lazy" decoding="async"></article>
     </section>
     <section id="cervejas">
-      <h2>Cervejas 600 ml</h2>
+      <h2><span class="category-icon" aria-hidden="true">🍺</span>Cervejas 600 ml</h2>
       <article class="with-photo"><div><h3>Heineken</h3><strong>R$ 20,00</strong></div><img src="imagens/cervejas/heineken.webp" alt="" width="240" height="240" loading="lazy" decoding="async"></article>
       <article class="with-photo"><div><h3>Eisenbahn</h3><strong>R$ 16,00</strong></div><img src="imagens/cervejas/eisenbahn-600ml.webp" alt="" width="240" height="240" loading="lazy" decoding="async"></article>
       <article class="with-photo"><div><h3>Amstel</h3><strong>R$ 16,00</strong></div><img src="imagens/cervejas/amstel-600ml.webp" alt="" width="240" height="240" loading="lazy" decoding="async"></article>
       <article class="with-photo"><div><h3>Original</h3><strong>R$ 18,00</strong></div><img src="imagens/cervejas/original.webp" alt="" width="240" height="240" loading="lazy" decoding="async"></article>
     </section>
     <section id="long-neck">
-      <h2>Long neck</h2>
+      <h2><span class="category-icon" aria-hidden="true">🍺</span>Long neck</h2>
       <article class="with-photo"><div><h3>Heineken</h3><strong>R$ 14,00</strong></div><img src="imagens/cervejas/heineken-long-neck.webp" alt="" width="240" height="240" loading="lazy" decoding="async"></article>
       <article class="with-photo"><div><h3>Heineken Zero</h3><strong>R$ 13,00</strong></div><img src="imagens/cervejas/heineken-zero.webp" alt="" width="240" height="240" loading="lazy" decoding="async"></article>
       <article class="with-photo"><div><h3>Corona</h3><strong>R$ 13,00</strong></div><img src="imagens/cervejas/corona.webp" alt="" width="240" height="240" loading="lazy" decoding="async"></article>
@@ -139,25 +233,25 @@
       <article class="with-photo"><div><h3>Praya Lager (sem glúten)</h3><strong>R$ 12,00</strong></div><img src="imagens/cervejas/praya-lager.webp" alt="" width="240" height="240" loading="lazy" decoding="async"></article>
     </section>
     <section id="baldes">
-      <h2>Baldes 600 ml</h2>
+      <h2><span class="category-icon" aria-hidden="true">🧊</span>Baldes 600 ml</h2>
       <article class="with-photo"><div><h3>Heineken (4 un.)</h3><strong>R$ 72,00</strong></div><img src="imagens/baldes/balde-heineken.webp" alt="" width="240" height="240" loading="lazy" decoding="async"></article>
       <article class="with-photo"><div><h3>Eisenbahn (4 un.)</h3><strong>R$ 56,00</strong></div><img src="imagens/baldes/balde-eisenbahn.webp" alt="" width="240" height="240" loading="lazy" decoding="async"></article>
       <article class="with-photo"><div><h3>Amstel (4 un.)</h3><strong>R$ 56,00</strong></div><img src="imagens/baldes/balde-amstel.webp" alt="" width="240" height="240" loading="lazy" decoding="async"></article>
       <article class="with-photo"><div><h3>Original (4 un.)</h3><strong>R$ 62,00</strong></div><img src="imagens/baldes/balde-original.webp" alt="" width="240" height="240" loading="lazy" decoding="async"></article>
     </section>
     <section id="baldes-long-neck">
-      <h2>Baldes long neck</h2>
+      <h2><span class="category-icon" aria-hidden="true">🧊</span>Baldes long neck</h2>
       <article class="with-photo"><div><h3>Heineken (6 un.)</h3><strong>R$ 72,00</strong></div><img src="imagens/baldes/balde-heineken-long-neck.webp" alt="" width="240" height="240" loading="lazy" decoding="async"></article>
       <article class="with-photo"><div><h3>Praya Lager (6 un.)</h3><strong>R$ 60,00</strong></div><img src="imagens/baldes/balde-praya.webp" alt="" width="240" height="240" loading="lazy" decoding="async"></article>
     </section>
     <section id="drinks">
-      <h2>Drinks</h2>
+      <h2><span class="category-icon" aria-hidden="true">🍹</span>Drinks</h2>
       <article class="with-photo"><div><h3>Caipirinha</h3><p>Limão, morango, abacaxi, maracujá ou kiwi.</p><strong>R$ 25,00</strong></div><img src="imagens/drinks/caipirinha.webp" alt="" width="240" height="240" loading="lazy" decoding="async"></article>
       <article class="with-photo"><div><h3>Kariri com mel (500 ml)</h3><strong>R$ 25,00</strong></div><img src="imagens/drinks/kariri-com-mel.webp" alt="" width="240" height="240" loading="lazy" decoding="async"></article>
     </section>
     <section id="bebidas-prontas">
-      <h2>Bebidas prontas</h2>
-      <article class="with-photo"><div><h3>Skool Beats</h3><strong>R$ 13,00</strong></div><img src="imagens/drinks/skool-beats.webp" alt="" width="240" height="240" loading="lazy" decoding="async"></article>
+      <h2><span class="category-icon" aria-hidden="true">🍷</span>Bebidas prontas</h2>
+      <article class="with-photo"><div><h3>Skol Beats</h3><strong>R$ 13,00</strong></div><img src="imagens/drinks/skool-beats.webp" alt="" width="240" height="240" loading="lazy" decoding="async"></article>
       <article class="with-photo"><div><h3>Smirnoff Ice</h3><strong>R$ 13,00</strong></div><img src="imagens/drinks/smirnoff-ice.webp" alt="" width="240" height="240" loading="lazy" decoding="async"></article>
       <article class="with-photo"><div><h3>GT Beats</h3><strong>R$ 13,00</strong></div><img src="imagens/drinks/gt-beats.webp" alt="" width="240" height="240" loading="lazy" decoding="async"></article>
       <article class="with-photo"><div><h3>Draft Red</h3><strong>R$ 15,00</strong></div><img src="imagens/drinks/draft-red.webp" alt="" width="240" height="240" loading="lazy" decoding="async"></article>
@@ -170,52 +264,52 @@
       <article class="with-photo"><div><h3>Red Bull</h3><strong>R$ 16,00</strong></div><img src="imagens/refrigerantes/red-bull.webp" alt="" width="240" height="240" loading="lazy" decoding="async"></article>
     </section>
     <section id="destilados">
-      <h2>Combo whisky</h2>
+      <h2><span class="category-icon" aria-hidden="true">🥃</span>Combo whisky</h2>
       <article class="with-photo"><div><h3>Jack Daniel’s</h3><p>4 Red Bulls + 4 gelos de coco</p><strong>R$ 400,00</strong></div><img src="imagens/destilados/jack-daniels.webp" alt="" width="240" height="240" loading="lazy" decoding="async"></article>
       <article class="with-photo"><div><h3>Black Label</h3><p>4 Red Bulls + 4 gelos de coco</p><strong>R$ 460,00</strong></div><img src="imagens/destilados/black-label.webp" alt="" width="240" height="240" loading="lazy" decoding="async"></article>
       <article class="with-photo"><div><h3>Red Label</h3><p>4 Red Bulls + 4 gelos de coco</p><strong>R$ 300,00</strong></div><img src="imagens/destilados/red-label.webp" alt="" width="240" height="240" loading="lazy" decoding="async"></article>
       <article class="with-photo"><div><h3>Gold Label</h3><p>4 Red Bulls + 4 gelos de coco</p><strong>R$ 480,00</strong></div><img src="imagens/destilados/gold-label.webp" alt="" width="240" height="240" loading="lazy" decoding="async"></article>
     </section>
     <section id="combo-gin">
-      <h2>Combo gin</h2>
+      <h2><span class="category-icon" aria-hidden="true">🍸</span>Combo gin</h2>
       <article class="with-photo"><div><h3>Rocks</h3><p>4 energéticos ou 4 tônicas (sem gelo)</p><strong>R$ 160,00</strong></div><img src="imagens/destilados/rocks-gin.webp" alt="" width="240" height="240" loading="lazy" decoding="async"></article>
       <article class="with-photo"><div><h3>Tanqueray</h3><p>4 energéticos ou 4 tônicas (sem gelo)</p><strong>R$ 320,00</strong></div><img src="imagens/destilados/tanqueray.webp" alt="" width="240" height="240" loading="lazy" decoding="async"></article>
       <article class="with-photo"><div><h3>Beefeater</h3><p>4 energéticos ou 4 tônicas (sem gelo)</p><strong>R$ 320,00</strong></div><img src="imagens/destilados/beefeater.webp" alt="" width="240" height="240" loading="lazy" decoding="async"></article>
       <article class="with-photo"><div><h3>Beefeater Pink</h3><p>4 energéticos ou 4 tônicas (sem gelo)</p><strong>R$ 350,00</strong></div><img src="imagens/destilados/beefeater-pink.webp" alt="" width="240" height="240" loading="lazy" decoding="async"></article>
       <article class="with-photo"><div><h3>Sevilla</h3><p>4 energéticos ou 4 tônicas (sem gelo)</p><strong>R$ 330,00</strong></div><img src="imagens/destilados/tanqueray-sevilla.webp" alt="" width="240" height="240" loading="lazy" decoding="async"></article>
-      <article class="with-photo"><div><h3>Bossa Nova</h3><p>4 energéticos ou 4 tônicas (sem gelo)</p><strong>R$ 350,00</strong></div><img src="imagens/destilados/bossa-nova-gin.webp" alt="" width="240" height="240" loading="lazy" decoding="async"></article>
+      <article class="with-photo"><div><h3>Tanqueray Bossa Nova</h3><p>4 energéticos ou 4 tônicas (sem gelo)</p><strong>R$ 350,00</strong></div><img src="imagens/destilados/bossa-nova-gin.webp" alt="" width="240" height="240" loading="lazy" decoding="async"></article>
       <article class="with-photo"><div><h3>Gordon’s</h3><p>4 energéticos ou 4 tônicas (sem gelo)</p><strong>R$ 250,00</strong></div><img src="imagens/destilados/gordons.webp" alt="" width="240" height="240" loading="lazy" decoding="async"></article>
     </section>
     <section id="combo-vodka">
-      <h2>Combo vodka</h2>
+      <h2><span class="category-icon" aria-hidden="true">🍾</span>Combo vodka</h2>
       <article class="with-photo"><div><h3>Smirnoff</h3><p>4 gelos de coco + 4 energéticos ou tônicas</p><strong>R$ 200,00</strong></div><img src="imagens/destilados/smirnoff.webp" alt="" width="240" height="240" loading="lazy" decoding="async"></article>
       <article class="with-photo"><div><h3>Absolut</h3><p>4 gelos de coco + 4 energéticos ou tônicas</p><strong>R$ 290,00</strong></div><img src="imagens/destilados/absolut.webp" alt="" width="240" height="240" loading="lazy" decoding="async"></article>
       <article class="with-photo"><div><h3>Cîroc</h3><p>4 gelos de coco + 4 energéticos ou tônicas</p><strong>R$ 460,00</strong></div><img src="imagens/destilados/ciroc.webp" alt="" width="240" height="240" loading="lazy" decoding="async"></article>
       <article class="with-photo"><div><h3>Grey Goose</h3><p>4 gelos de coco + 4 energéticos ou tônicas</p><strong>R$ 400,00</strong></div><img src="imagens/destilados/grey-goose.webp" alt="" width="240" height="240" loading="lazy" decoding="async"></article>
     </section>
     <section id="whisky-doses">
-      <h2>Whisky – doses</h2>
-      <article class="with-photo"><div><h3>Jack Daniel’s</h3><p>Gelo de coco + energético</p><strong>R$ 55,00</strong></div><img src="imagens/destilados/dose-whisky.webp" alt="" width="240" height="240" loading="lazy" decoding="async"></article>
-      <article class="with-photo"><div><h3>Red Label</h3><p>Gelo de coco + energético</p><strong>R$ 40,00</strong></div><img src="imagens/destilados/dose-whisky.webp" alt="" width="240" height="240" loading="lazy" decoding="async"></article>
-      <article class="with-photo"><div><h3>Black Label</h3><p>Gelo de coco + energético</p><strong>R$ 65,00</strong></div><img src="imagens/destilados/dose-whisky.webp" alt="" width="240" height="240" loading="lazy" decoding="async"></article>
+      <h2><span class="category-icon" aria-hidden="true">🥃</span>Whisky – doses</h2>
+      <article class="with-photo"><div><h3>Jack Daniel’s</h3><p>Gelo de coco + energético</p><strong>R$ 55,00</strong></div><img src="imagens/destilados/doses/jack-daniels.webp" alt="" width="240" height="240" loading="lazy" decoding="async"></article>
+      <article class="with-photo"><div><h3>Red Label</h3><p>Gelo de coco + energético</p><strong>R$ 40,00</strong></div><img src="imagens/destilados/doses/red-label.webp" alt="" width="240" height="240" loading="lazy" decoding="async"></article>
+      <article class="with-photo"><div><h3>Black Label</h3><p>Gelo de coco + energético</p><strong>R$ 65,00</strong></div><img src="imagens/destilados/doses/black-label.webp" alt="" width="240" height="240" loading="lazy" decoding="async"></article>
     </section>
     <section id="gin-doses">
-      <h2>Gin – doses</h2>
-      <article class="with-photo"><div><h3>Rocks</h3><p>Gelo de coco + energético ou tônica</p><strong>R$ 25,00</strong></div><img src="imagens/destilados/dose-gin.webp" alt="" width="240" height="240" loading="lazy" decoding="async"></article>
-      <article class="with-photo"><div><h3>Tanqueray</h3><p>Gelo de coco + energético ou tônica</p><strong>R$ 45,00</strong></div><img src="imagens/destilados/dose-gin.webp" alt="" width="240" height="240" loading="lazy" decoding="async"></article>
-      <article class="with-photo"><div><h3>Beefeater</h3><p>Gelo de coco + energético ou tônica</p><strong>R$ 45,00</strong></div><img src="imagens/destilados/dose-gin.webp" alt="" width="240" height="240" loading="lazy" decoding="async"></article>
-      <article class="with-photo"><div><h3>Beefeater Pink</h3><p>Gelo de coco + energético ou tônica</p><strong>R$ 45,00</strong></div><img src="imagens/destilados/dose-gin.webp" alt="" width="240" height="240" loading="lazy" decoding="async"></article>
-      <article class="with-photo"><div><h3>Sevilla</h3><p>Gelo de coco + energético ou tônica</p><strong>R$ 45,00</strong></div><img src="imagens/destilados/dose-gin.webp" alt="" width="240" height="240" loading="lazy" decoding="async"></article>
-      <article class="with-photo"><div><h3>Bossa Nova</h3><p>Gelo de coco + energético ou tônica</p><strong>R$ 55,00</strong></div><img src="imagens/destilados/dose-gin.webp" alt="" width="240" height="240" loading="lazy" decoding="async"></article>
-      <article class="with-photo"><div><h3>Gordon’s</h3><p>Gelo de coco + energético ou tônica</p><strong>R$ 35,00</strong></div><img src="imagens/destilados/dose-gin.webp" alt="" width="240" height="240" loading="lazy" decoding="async"></article>
+      <h2><span class="category-icon" aria-hidden="true">🍸</span>Gin – doses</h2>
+      <article class="with-photo"><div><h3>Rocks</h3><p>Gelo de coco + energético ou tônica</p><strong>R$ 25,00</strong></div><img src="imagens/destilados/doses/rocks-gin.webp" alt="" width="240" height="240" loading="lazy" decoding="async"></article>
+      <article class="with-photo"><div><h3>Tanqueray</h3><p>Gelo de coco + energético ou tônica</p><strong>R$ 45,00</strong></div><img src="imagens/destilados/doses/tanqueray.webp" alt="" width="240" height="240" loading="lazy" decoding="async"></article>
+      <article class="with-photo"><div><h3>Beefeater</h3><p>Gelo de coco + energético ou tônica</p><strong>R$ 45,00</strong></div><img src="imagens/destilados/doses/beefeater.webp" alt="" width="240" height="240" loading="lazy" decoding="async"></article>
+      <article class="with-photo"><div><h3>Beefeater Pink</h3><p>Gelo de coco + energético ou tônica</p><strong>R$ 45,00</strong></div><img src="imagens/destilados/doses/beefeater-pink.webp" alt="" width="240" height="240" loading="lazy" decoding="async"></article>
+      <article class="with-photo"><div><h3>Sevilla</h3><p>Gelo de coco + energético ou tônica</p><strong>R$ 45,00</strong></div><img src="imagens/destilados/doses/tanqueray-sevilla.webp" alt="" width="240" height="240" loading="lazy" decoding="async"></article>
+      <article class="with-photo"><div><h3>Tanqueray Bossa Nova</h3><p>Gelo de coco + energético ou tônica</p><strong>R$ 55,00</strong></div><img src="imagens/destilados/doses/bossa-nova-gin.webp" alt="" width="240" height="240" loading="lazy" decoding="async"></article>
+      <article class="with-photo"><div><h3>Gordon’s</h3><p>Gelo de coco + energético ou tônica</p><strong>R$ 35,00</strong></div><img src="imagens/destilados/doses/gordons.webp" alt="" width="240" height="240" loading="lazy" decoding="async"></article>
     </section>
     <section id="vodka-doses">
-      <h2>Vodka – doses</h2>
-      <article class="with-photo"><div><h3>Absolut</h3><strong>R$ 40,00</strong></div><img src="imagens/destilados/dose-vodka.webp" alt="" width="240" height="240" loading="lazy" decoding="async"></article>
-      <article class="with-photo"><div><h3>Smirnoff</h3><strong>R$ 25,00</strong></div><img src="imagens/destilados/dose-vodka.webp" alt="" width="240" height="240" loading="lazy" decoding="async"></article>
+      <h2><span class="category-icon" aria-hidden="true">🍸</span>Vodka – doses</h2>
+      <article class="with-photo"><div><h3>Absolut</h3><strong>R$ 40,00</strong></div><img src="imagens/destilados/doses/absolut.webp" alt="" width="240" height="240" loading="lazy" decoding="async"></article>
+      <article class="with-photo"><div><h3>Smirnoff</h3><strong>R$ 25,00</strong></div><img src="imagens/destilados/doses/smirnoff.webp" alt="" width="240" height="240" loading="lazy" decoding="async"></article>
     </section>
     <section id="outros">
-      <h2>Outros</h2>
+      <h2><span class="category-icon" aria-hidden="true">💨</span>Tabacaria</h2>
       <article class="with-photo"><div><h3>Narguilé – aluguel</h3><strong>R$ 35,00</strong></div><img src="imagens/outros/narguile.webp" alt="" width="240" height="240" loading="lazy" decoding="async"></article>
       <article class="with-photo"><div><h3>Narguilé – rosh</h3><strong>R$ 15,00</strong></div><img src="imagens/outros/rosh.webp" alt="" width="240" height="240" loading="lazy" decoding="async"></article>
     </section>
