@@ -320,16 +320,51 @@
     </section>
   </main>
   <script>
-    const links = document.querySelectorAll('nav a');
+    const nav = document.querySelector('nav');
+    const rail = nav.querySelector('ul');
+    const categories = Array.from(nav.querySelectorAll('a'), link => ({
+      link,
+      section: document.getElementById(link.hash.slice(1)),
+    }));
+    let activeLink;
+    let framePending = false;
+
     function markCategory() {
-      const hash = location.hash || '#lanches';
-      const category = ['#long-neck', '#baldes', '#baldes-long-neck'].includes(hash) ? '#cervejas' : hash;
-      for (const link of links) {
-        if (link.hash === category) link.setAttribute('aria-current', 'location');
-        else link.removeAttribute('aria-current');
+      framePending = false;
+      const cutoff = Math.max(nav.getBoundingClientRect().bottom + 8, 80);
+      let current = categories[0];
+      for (const category of categories) {
+        if (category.section.getBoundingClientRect().top > cutoff) break;
+        current = category;
+      }
+
+      const { scrollHeight, clientHeight } = document.documentElement;
+      if (scrollHeight > clientHeight && window.scrollY + clientHeight >= scrollHeight - 2) {
+        current = categories[categories.length - 1];
+      }
+
+      if (activeLink === current.link) return;
+      activeLink?.removeAttribute('aria-current');
+      activeLink = current.link;
+      activeLink.setAttribute('aria-current', 'location');
+
+      const tab = activeLink.getBoundingClientRect();
+      const viewport = rail.getBoundingClientRect();
+      if (tab.left < viewport.left || tab.right > viewport.right) {
+        rail.scrollBy({ left: (tab.left + tab.right - viewport.left - viewport.right) / 2 });
       }
     }
-    addEventListener('hashchange', markCategory);
+
+    function scheduleCategoryUpdate() {
+      if (framePending) return;
+      framePending = true;
+      requestAnimationFrame(markCategory);
+    }
+
+    addEventListener('scroll', scheduleCategoryUpdate, { passive: true });
+    addEventListener('resize', scheduleCategoryUpdate);
+    addEventListener('hashchange', scheduleCategoryUpdate);
+    addEventListener('load', scheduleCategoryUpdate);
     markCategory();
   </script>
 </body>
