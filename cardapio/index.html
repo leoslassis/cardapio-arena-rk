@@ -28,12 +28,11 @@
     header { position: relative; max-width: 76rem; margin: auto; text-align: center; }
     .brand {
       display: block;
-      width: 100%;
-      height: clamp(8rem, 21vw, 14.4rem);
-      object-fit: cover;
-      object-position: center;
-      mask-image: linear-gradient(#000 88%, transparent);
+      width: min(100%, clamp(11rem, 25vw, 16rem));
+      height: auto;
+      margin-inline: auto;
     }
+    .brand-panel { background: #1a1819; }
     h1 {
       margin: .75rem 1rem .85rem;
       font-size: clamp(1.65rem, 5vw, 2.45rem);
@@ -134,7 +133,7 @@
 </head>
 <body>
   <header>
-    <img class="brand" src="../imagens/identidade/faixa-vinho-fosca.webp" width="560" height="127" alt="Arena RK Itaquera">
+    <div class="brand-panel"><img class="brand" src="../imagens/identidade/logo-arena-rk-escuro.webp" width="600" height="421" alt="Arena RK Itaquera"></div>
     <h1>Cardápio</h1>
     <a class="arena-link" href="../arena/">Conheça a Arena RK</a>
   </header>
