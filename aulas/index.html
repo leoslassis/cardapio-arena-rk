@@ -6,6 +6,13 @@
   <meta name="theme-color" content="#0d0c0d">
   <title>Aulas | Arena RK Itaquera</title>
   <link rel="stylesheet" href="../arena/site.css">
+  <style>
+    .plan-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr)); gap: .75rem; list-style: none; margin: 1rem 0; padding: 0; }
+    .plan-card { display: flex; align-items: center; gap: .9rem; padding: .85rem; background: #0c0b0c; border: 1px solid var(--line); border-radius: .7rem; }
+    .plan-logo { width: 6.5rem; height: 3.25rem; flex-shrink: 0; object-fit: contain; }
+    .plan-card p { margin: .15rem 0 0; }
+    .plan-card strong { color: var(--text); }
+  </style>
 </head>
 <body>
   <header class="site-header">
@@ -64,10 +71,21 @@
           <li><time datetime="09:00">09:00</time><span>Livre</span></li>
         </ul></article>
       </div>
-      <p class="note">Os horários marcados como “Livre” seguem a grade da Arena. Confirme a disponibilidade com a equipe.</p>
+      <p class="note"><strong>Observação:</strong> “Livre” é uma aula sem exigência de nivelamento, aberta a todos os níveis. Confirme a disponibilidade com a equipe.</p>
       <section class="panel plans">
         <h2>Planos aceitos</h2>
-        <p><strong>Futevôlei e beach tennis:</strong> Wellhub a partir do Silver e TotalPass a partir do TP3. Também aceitamos mensalistas.</p>
+        <p>Válidos para futevôlei e beach tennis.</p>
+        <ul class="plan-grid">
+          <li class="plan-card">
+            <img class="plan-logo" src="../imagens/planos/wellhub.webp" alt="" width="300" height="90">
+            <div><h3>Wellhub</h3><p>A partir do <strong>Silver</strong></p></div>
+          </li>
+          <li class="plan-card">
+            <img class="plan-logo" src="../imagens/planos/totalpass.webp" alt="" width="175" height="155">
+            <div><h3>TotalPass</h3><p>A partir do <strong>TP3</strong></p></div>
+          </li>
+        </ul>
+        <p>Também aceitamos mensalistas.</p>
         <p><a href="https://wa.me/message/YLUL3SLSPCZ5C1">Consultar horários de beach tennis e mensalidades</a></p>
       </section>
     </div>
