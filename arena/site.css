@@ -13,9 +13,9 @@ body { margin: 0; background: var(--bg); color: var(--text); line-height: 1.55; 
 a { color: inherit; }
 a:focus-visible { outline: 2px solid var(--red); outline-offset: 4px; }
 .wrap { width: min(100% - 2rem, 70rem); margin-inline: auto; }
-.site-header { background: #1a1819; border-bottom: 1px solid var(--line); }
+.site-header { background: var(--bg); border-bottom: 1px solid var(--line); }
 .site-header .wrap { display: flex; align-items: center; justify-content: space-between; gap: .7rem 1rem; flex-wrap: wrap; padding-block: .85rem; }
-.wordmark img { display: block; width: 6rem; height: auto; }
+.wordmark img { display: block; width: 5.25rem; height: auto; }
 nav { display: flex; flex-wrap: wrap; gap: .25rem .45rem; }
 nav a { padding: .4rem .55rem; color: var(--muted); text-decoration: none; border-radius: .4rem; }
 nav a:hover, nav a[aria-current] { color: var(--text); background: #2a1c21; }
